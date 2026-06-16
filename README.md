@@ -1,95 +1,41 @@
-# Game 1: The Automated Proofreader
+# Week 3 – Team 1 Repository
 
-## Brief
+## Overview
 
-In this game, you will build a simple GitHub Actions workflow that checks Markdown files for spelling mistakes.
+This repository is the `Team 1` workspace for the Week 3 Games. The team will progressively build GitHub Actions workflows, validate content quality, investigate pipeline failures, publish a release, repair broken workflows, and implement automated security scanning.
 
-One student acts as the **Press Operator** and creates the automation. The other acts as the **Field Correspondent** and submits a draft containing spelling mistakes.
-
-Your goal is to experience how GitHub Actions prevent poor-quality work from being merged into the `main` branch.
-
-> Work concurrently. Do not wait for your partner.
-
----
-
-## Instructions
-
-### Press Operator
-
-1. On the `main` branch, create:
+## Repository Structure
 
 ```text
-.github/workflows/spellcheck.yml
+.
+├── .github
+│   └── workflows
+│       ├── spellcheck.yml          # Game 1: Automated Proofreader
+│       ├── markdownlint.yml        # Game 2: Layout Enforcer
+│       ├── printingpresslint.yml   # Game 3: Printing Press Jam
+│       ├── repair_job.yml          # Game 5: Press Schematics
+│       └── redactor.yml            # Game 6: The Redactor
+├── draft.md                        # Game 1
+├── editorial_draft.md              # Game 2
+├── chapters/                       # Game 3
+├── RELEASE.md                      # Game 4
+└── expense_reports.md              # Game 6
 ```
 
-2. Copy the following workflow into the file:
+## Workflows
 
-```yaml
-name: Spellcheck
+| Workflow                | Game   | Purpose                                                            |
+| ----------------------- | ------ | ------------------------------------------------------------------ |
+| `spellcheck.yml`        | Game 1 | Detect spelling mistakes before merge.                             |
+| `markdownlint.yml`      | Game 2 | Enforce Markdown formatting and layout standards.                  |
+| `printingpresslint.yml` | Game 3 | Validate shared anthology content during collaborative publishing. |
+| `repair_job.yml`        | Game 5 | Demonstrate workflow troubleshooting and YAML repair.              |
+| `redactor.yml`          | Game 6 | Detect exposed secrets and credentials before merge.               |
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+## Release
 
-jobs:
-  spellcheck:
-    name: Spellcheck Markdown Files
-    runs-on: ubuntu-latest
+| Artifact                | Game   | Purpose                                                |
+| ----------------------- | ------ | ------------------------------------------------------ |
+| GitHub Release `v1.0.0` | Game 4 | Publish the first validated edition of the repository. |
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run Spellcheck
-        uses: streetsidesoftware/cspell-action@v6
-        with:
-          files: '**/*.md'
-          incremental_files_only: false
-          config: '{"words": ["markdown", "github", "workflow"]}'
 ```
-
-3. Commit the workflow directly to `main`.
-
----
-
-### Field Correspondent
-
-1. Create a branch named:
-
-```text
-first-draft
-```
-
-2. On `first-draft`, create:
-
-```text
-draft.md
-```
-
-3. Copy one of the starter paragraphs provided by your instructor.
-4. Introduce 6–8 spelling mistakes.
-5. Commit the file to `first-draft`.
-
----
-
-### Both Students
-
-1. Open a Pull Request from `first-draft` into `main`.
-2. Wait for the spellcheck workflow to run.
-3. Review the workflow result and open the logs.
-4. Identify the reported spelling mistakes.
-5. Correct the mistakes and commit the changes.
-6. Wait for the workflow to run again.
-7. Merge the Pull Request only after all checks pass.
-
----
-
-## Success Criteria
-
-* The spellcheck workflow executes successfully.
-* The Pull Request is blocked when spelling errors exist.
-* The spelling errors are corrected.
-* The workflow passes with a green checkmark.
-* The Pull Request is merged into `main`.
