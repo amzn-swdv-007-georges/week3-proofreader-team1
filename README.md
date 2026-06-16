@@ -37,5 +37,3 @@ This repository is the `Team 1` workspace for the Week 3 Games. The team will pr
 | Artifact                | Game   | Purpose                                                |
 | ----------------------- | ------ | ------------------------------------------------------ |
 | GitHub Release `v1.0.0` | Game 4 | Publish the first validated edition of the repository. |
-
-```
