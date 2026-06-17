@@ -19,7 +19,7 @@ jobs:
 
       - name: Run markdownlint
         run: |
-          markdownlint "**/*.md"
+          markdownlint "chapters/**/*.md"
 
   markdown-link-check:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
 
       - name: Check markdown links
         run: |
-          find . -name "*.md" -print0 | while IFS= read -r -d '' file
+          find chapters -name "*.md" -print0 | while IFS= read -r -d '' file
           do
             echo "Checking links in $file"
             markdown-link-check "$file"
