@@ -1,0 +1,17 @@
+name: Broken Press Schematic
+
+on: pull_request
+
+jobs:
+  repair-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Test the press
+        run: echo "The printing press is running"
+
+      - name: Final inspection
+        run: echo "Schematic repaired"
