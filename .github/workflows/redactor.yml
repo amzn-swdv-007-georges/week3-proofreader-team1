@@ -24,4 +24,4 @@ jobs:
           docker run --rm \
             -v ${{ github.workspace }}:/repo \
             ghcr.io/gitleaks/gitleaks:latest \
-            detect --source=/repo --verbose
+            detect --source=/repo --no-git --verbose
