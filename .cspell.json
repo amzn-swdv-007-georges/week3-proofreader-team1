@@ -3,6 +3,10 @@
   "words": [
     "markdown",
     "github",
-    "workflow"
+    "workflow",
+    "markdownlint",
+    "printingpresslint",
+    "redactor",
+    "yaml"
   ]
 }
